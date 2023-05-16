@@ -1,0 +1,187 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    /* vertical-align: middle; */
+    display: block;
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.d-f {
+    display: flex;
+}
+
+
+.mb-30{
+    margin-bottom: 30px;
+}
+.mt-4 {
+    margin-top: 16px;
+}
+
+/* 通用 */
+.wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    border-left: rgb(224, 224, 224) solid thin;
+    border-right: rgb(224, 224, 224) solid thin;
+    padding: 0 5%;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.linkBtn {
+    transition: all 0.3s;
+}
+
+.linkBtn:hover {
+    opacity: 0.7;
+}
+
+.loading {
+    margin: 0;
+    transition: all 0.5s;
+    opacity: 0;
+    height: 0;
+    /* display: none; */
+}
+
+.loading--show {
+    opacity: 1;
+    height: auto;
+    margin: 10px 0;
+    /* display: block; */
+}
+
+/* Chat--外框樣式 */
+.operator {
+    width: 15%;
+}
+
+.msgList {
+    flex-direction: column;
+    margin-left: 1%;
+    width: 65%;
+}
+
+.msgItem {
+    padding: 0.6em;
+    margin: 5px 10px;
+    background-color: #c1c1c1;
+    border-radius: 5px;
+    position: relative;
+}
+
+.msgItem::after {
+    position: absolute;
+    content: '';
+    left: -9px;
+    top: 15px;
+    border-style: solid;
+    border-width: 5px 10px 5px 0;
+    border-color: transparent #c1c1c1 transparent transparent;
+}
+
+/* singleList --外框樣式 */
+.singleList {
+    background-color: #B8DEC9;
+    padding: 10px;
+    border-radius: 16px;
+    flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+}
+
+.singleItem {
+    cursor: pointer;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #2D8E63;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+    padding: 0.6em 0.4em;
+    margin: 0.5em 0;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.singleItem:hover {
+    color: #fff;
+    background-color: #2D8E63;
+}
+
+/* answer 點擊後呈現 */
+.singleItem--active {
+    color: #fff;
+    background-color: #2D8E63;
+}
+
+.singleItem--close {
+    display: none;
+}
+
+.QAcontrol {
+    display: none;
+}
+
+.QAcontrol--show {
+    display: block;
+}
+
+.nextBtnControl {
+
+    text-align: right;
+}
+
+.nextBtn {
+    background-color: #2D8E63;
+    cursor: pointer;
+    padding: 15px 25px;
+    display: inline-block;
+    color: #fff;
+    margin-left: auto;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+    transition: all 0.3s;
+}
+
+.nextBtn:hover {
+    background-color: #fff;
+    color: #2D8E63;
+}
