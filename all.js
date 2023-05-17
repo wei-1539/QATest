@@ -14,7 +14,6 @@ singleList.forEach((item, QAind) => {
     const singleItem = document.querySelectorAll(
       `[data-answerNumber = '${answerNumber}'] .singleItem`
     );
-    console.log(singleItem);
 
     singleItem.forEach((answerBTN) => {
       // 判斷點擊哪個
@@ -29,43 +28,80 @@ singleList.forEach((item, QAind) => {
           }
         });
 
-        nextQA()
-        console.log('nextQAnumber',nextQAnumber)
+        nextQA(answerNumber);
       });
     });
   }
 });
 
 let nextQAnumber = 0;
-
-function nextQA() {
-  loading.forEach((item) => {
-    let loadingNumber = item.getAttribute("data-loading");
-    console.log("loadingNumber", loadingNumber)
-    if (nextQAnumber == loadingNumber) {
-      item.classList.add("loading--show");
-      setTimeout(() => {
-        item.classList.remove("loading--show");
-        QAcontrol.forEach((item) => {
-          let QAcontrolNumber = item.getAttribute("data-QAnumber");
-          console.log("QAcontrolNumber", QAcontrolNumber)
-          if (nextQAnumber == QAcontrolNumber) {
-            item.classList.add("QAcontrol--show", "fadeInLeft");
-
-          }
-        });
-        nextQAnumber+=1
-      }, 1500); 
+// 顯示下一道題目
+function nextQA(number) {
+  console.log(number);
+  loading.forEach((item, ind) => {
+    if (ind != number) {
+      return;
+    } else {
+      let loadingNumber = item.getAttribute("data-loading");
+      console.log("loadingNumber ", `第${ind}個`, loadingNumber);
+      if (nextQAnumber == loadingNumber) {
+        item.classList.add("loading--show");
+        setTimeout(() => {
+          item.classList.remove("loading--show");
+          QAcontrol.forEach((item) => {
+            let QAcontrolNumber = item.getAttribute("data-QAnumber");
+            if (nextQAnumber == QAcontrolNumber) {
+              item.classList.add("QAcontrol--show", "fadeInLeft");
+              scrollBottom(item);
+            }
+          });
+          nextQAnumber += 1;
+        }, 1500);
+      }
     }
-    
+  });
+}
+// 點擊滾動到指定位子
+function scrollBottom(el) {
+  console.log(el.offsetTop);
+  window.scrollTo({ behavior: "smooth", top: el.offsetTop - 10 });
+}
+
+// 選取下一題的按鈕【不是多選一按鈕】
+const nextBtn = document.querySelectorAll(".nextBtn");
+
+nextBtn.forEach((item, ind) => {
+  item.addEventListener("click", () => {
+    console.log(ind);
+    if (ind + 3 != nextQAnumber) {
+      return;
+    } else {
+      scrollBottom2();
+      nextQA(nextQAnumber);
+    }
+  });
+});
+// 選取下一題的按鈕【不是多選一按鈕】先讓loading出來
+function scrollBottom2() {
+  window.scrollTo({
+    top: document.documentElement.scrollHeight,
+    behavior: "smooth",
   });
 }
 
-const nextBtn = document.querySelector('.nextBtn')
-nextBtn.addEventListener("click",()=>{
-  nextQA()
-})
-const nextBtn2 = document.querySelector('.nextBtn2')
-nextBtn2.addEventListener("click",()=>{
-  nextQA()
-})
+// 有Tips的功能
+const singleItemTip = document.querySelectorAll(".singleItemTip");
+const tips = document.querySelectorAll(".tips");
+singleItemTip.forEach((item, ind) => {
+  item.addEventListener("click", () => {
+    item.classList.add("singleItemTip--active");
+    tips[ind].classList.add("tips--show");
+    singleItemTip.forEach((checkItem, checkInd) => {
+      if (item != checkItem) {
+        // console.log(checkItem);
+        checkItem.classList.remove("singleItemTip--active");
+        tips[checkInd].classList.remove("tips--show");
+      }
+    });
+  });
+});

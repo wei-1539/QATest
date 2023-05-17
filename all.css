@@ -41,9 +41,10 @@ a {
 }
 
 
-.mb-30{
+.mb-30 {
     margin-bottom: 30px;
 }
+
 .mt-4 {
     margin-top: 16px;
 }
@@ -54,7 +55,7 @@ a {
     margin: 0 auto;
     border-left: rgb(224, 224, 224) solid thin;
     border-right: rgb(224, 224, 224) solid thin;
-    padding: 0 5%;
+    padding: 5%;
 }
 
 section {
@@ -119,16 +120,23 @@ section {
 }
 
 /* singleList --外框樣式 */
-.singleList {
+.answer {
+    width: 55%;
+    margin-left: auto;
+}
+
+.singleList,
+.singleListTip {
     background-color: #B8DEC9;
     padding: 10px;
     border-radius: 16px;
     flex-direction: column;
-    width: 50%;
-    margin-left: auto;
+    /* width: 50%;
+    margin-left: auto; */
 }
 
-.singleItem {
+.singleItem,
+.singleItemTip {
     cursor: pointer;
     color: #000;
     background-color: #fff;
@@ -141,16 +149,20 @@ section {
     transition: all 0.3s;
 }
 
-.singleItem:hover {
+.singleItem:hover,
+.singleItemTip:hover {
     color: #fff;
     background-color: #2D8E63;
 }
 
 /* answer 點擊後呈現 */
-.singleItem--active {
+
+.singleItem--active,
+.singleItemTip--active {
     color: #fff;
     background-color: #2D8E63;
 }
+
 
 .singleItem--close {
     display: none;
@@ -184,4 +196,49 @@ section {
 .nextBtn:hover {
     background-color: #fff;
     color: #2D8E63;
+}
+
+.remarkTitle {
+    font-size: 0.9em;
+}
+
+.tips {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background: #e2e4f3;
+    border-radius: 0.5em;
+    font-size: 0.9em;
+    padding: 0.5em;
+    color: #333;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .7));
+}
+
+.tips::after {
+    position: absolute;
+    content: '';
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #e2e4f3 transparent transparent transparent;
+}
+
+.tips--show {
+    display: block;
+    bottom: 105%;
+}
+
+@media (max-width:768px) {
+    .chat {
+        margin-bottom: 10px;
+    }
+
+    .answer {
+        width: 65%;
+    }
 }
